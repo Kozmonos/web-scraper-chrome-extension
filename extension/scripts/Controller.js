@@ -866,6 +866,7 @@ SitemapController.prototype = {
 		var downloadImage = $("#edit-selector [name=downloadImage]").is(":checked");
 		var clickPopup = $("#edit-selector [name=clickPopup]").is(":checked");
 		var regex = $("#edit-selector [name=regex]").val();
+		var splitAt = $("#edit-selector [name=splitAt]").val();
 		var delay = $("#edit-selector [name=delay]").val();
 		var extractAttribute = $("#edit-selector [name=extractAttribute]").val();
 		var parentSelectors = $("#edit-selector [name=parentSelectors]").val();
@@ -899,6 +900,7 @@ SitemapController.prototype = {
 			downloadImage: downloadImage,
 			clickPopup: clickPopup,
 			regex: regex,
+			splitAt: splitAt,
 			extractAttribute:extractAttribute,
 			parentSelectors: parentSelectors,
 			columns:columns,

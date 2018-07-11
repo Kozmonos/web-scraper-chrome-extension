@@ -30,7 +30,13 @@ var SelectorImage = {
 				var deferredData = $.Deferred();
 
 				var data = {};
-				data[this.id + '-src'] = element.src;
+
+				if (this.splitAt !== undefined && this.splitAt.length) {
+					var matches = element.src.split(this.splitAt);
+					data[this.id] = matches[0];
+				}else{
+					data[this.id] = element.src;
+				}
 
 				// download image if required
 				if(!this.downloadImage) {
@@ -110,11 +116,11 @@ var SelectorImage = {
 	},
 
 	getDataColumns: function () {
-		return [this.id + '-src'];
+		return [this.id];
 	},
 
 	getFeatures: function () {
-		return ['multiple', 'delay', 'downloadImage']
+		return ['multiple', 'splitAt', 'delay', 'downloadImage']
 	},
 
 	getItemCSSSelector: function() {
