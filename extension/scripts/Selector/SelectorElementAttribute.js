@@ -27,7 +27,14 @@ var SelectorElementAttribute = {
 		$(elements).each(function (k, element) {
 			var data = {};
 
-			data[this.id] = $(element).attr(this.extractAttribute);
+			if (this.splitAt !== undefined && this.splitAt.length) {
+				var matches = $(element).attr(this.extractAttribute).split(this.splitAt);
+				data[this.id] = matches[0];
+			}else{
+				data[this.id] = $(element).attr(this.extractAttribute);
+			}
+
+			//data[this.id] = $(element).attr(this.extractAttribute);
 			result.push(data);
 		}.bind(this));
 
@@ -46,6 +53,6 @@ var SelectorElementAttribute = {
 	},
 
 	getFeatures: function () {
-		return ['multiple', 'extractAttribute', 'delay']
+		return ['multiple', 'splitAt', 'extractAttribute', 'delay']
 	}
 };

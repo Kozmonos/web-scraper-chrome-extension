@@ -204,7 +204,13 @@ Sitemap.prototype = {
 		return new Blob(csvData, {type: 'text/csv'});
 	},
 	getDataExportJSONBlob: function (data) {
-		var jsonData = JSON.stringify(data, undefined, 4);
+		var cleanJSON = [];
+		data.map(function (row){
+			if(row.title !== null){
+				cleanJSON.push(row);
+			}
+		});
+		var jsonData = JSON.stringify(cleanJSON, undefined, 4);
 		return new Blob([jsonData], {type: 'application/json'});
 	},
 	getSelectorById: function (selectorId) {
